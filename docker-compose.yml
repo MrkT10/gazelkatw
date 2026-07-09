@@ -1,0 +1,31 @@
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: gazelkatw_root
+      MYSQL_DATABASE: gazelkatw_demo
+      MYSQL_USER: gazelkatw_user
+      MYSQL_PASSWORD: gazelkatw_pass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    platform: linux/amd64
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: gazelkatw_user
+      WORDPRESS_DB_PASSWORD: gazelkatw_pass
+      WORDPRESS_DB_NAME: gazelkatw_demo
+    volumes:
+      - ./theme:/var/www/html/wp-content/themes
+
+volumes:
+  db_data:
