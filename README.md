@@ -1,5 +1,5 @@
 # gazelkatw
-Gazelka Tailwid Wordpress Theme
+Gazelka Tailwind Wordpress Theme
 ================
 
 ## Instalacja
