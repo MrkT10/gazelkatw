@@ -219,3 +219,37 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Register top navbar menus
+ */
+function gazelkatw_register_menus() {
+    register_nav_menus( array(
+        'top-navbar'  => 'Główne menu nawigacji (górny pasek)',
+        'mega_col_1'  => 'Megamenu - Kolumna 1',
+        'mega_col_2'  => 'Megamenu - Kolumna 2',
+        'mega_col_3'  => 'Megamenu - Kolumna 3',
+        'mega_col_4'  => 'Megamenu - Kolumna 4',
+    ) );
+}
+add_action( 'init', 'gazelkatw_register_menus' );
+
+/**
+ * Register custom logotype location
+ */
+function gazelka_theme_logo_url() {
+    return get_stylesheet_directory_uri() . '/assets/logotyp.png';
+}
+
+/**
+ * Custom logotype setup
+ */
+function my_theme_logo($class = '', $width = 180) {
+    $logo_url = gazelka_theme_logo_url();
+    echo '<img src="' . esc_url($logo_url) . '" 
+               alt="' . get_bloginfo('name') . '" 
+               class="' . esc_attr($class) . '" 
+               width="' . $width . '" 
+               height="auto" 
+               loading="lazy">';
+}
