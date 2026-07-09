@@ -1,0 +1,20 @@
+/**
+ * Custom top navbar styles
+ */
+
+.mega-menu ul > li > a {
+    font-weight: 600;
+    color: #1f2937;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15.5px;
+}
+.mega-menu ul ul li a {
+    font-weight: 400;
+    color: #374151;
+    font-size: 14.5px;
+}
+#menu-megamenu-kolumna-4 li > a{
+    color: #1f2937;
+    font-weight: 500;
+}
